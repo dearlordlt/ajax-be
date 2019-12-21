@@ -62,7 +62,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm test:cov"
+      "pre-push": "npm run test:cov"
     }
   }
 }
