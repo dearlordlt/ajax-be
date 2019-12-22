@@ -1,23 +1,17 @@
 import { AuthTokenDto } from './auth/access-token.dto';
-import {
-  Controller,
-  Request,
-  Post,
-  Get,
-  UseGuards,
-  Body,
-} from '@nestjs/common';
+import { Controller, Post, UseGuards, Body, Param } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { AppService } from './app.service';
 import { UserDto } from './users/user.dto';
 import { AuthService } from './auth/auth.service';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiParam, ApiBody, ApiTags } from '@nestjs/swagger';
 
 @ApiBearerAuth()
+@ApiTags('Login')
 @Controller()
 export class AppController {
   constructor(private readonly authService: AuthService) {}
 
+  @ApiBody({ type: UserDto })
   @UseGuards(AuthGuard('local'))
   @Post('auth/login')
   async login(@Body() req: UserDto): Promise<AuthTokenDto> {
@@ -25,8 +19,8 @@ export class AppController {
   }
 
   @UseGuards(AuthGuard('jwt'))
-  @Post('auth/test')
-  async test() {
-    return 'Hello World';
+  @Post('auth/test/:test')
+  async test(@Param('test') test: string) {
+    return 'Hello World ' + JSON.stringify(test);
   }
 }
