@@ -24,7 +24,7 @@ export class AppController {
     return this.authService.login(req);
   }
 
-  @UseGuards(AuthGuard('local'))
+  @UseGuards(AuthGuard('jwt'))
   @Post('auth/test')
   async test() {
     return 'Hello World';
