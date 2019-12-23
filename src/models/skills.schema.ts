@@ -1,8 +1,11 @@
-import { SkillTypes } from './../types/types';
+import { SKILL_TYPES } from './../types/types';
 import * as mongoose from 'mongoose';
 
-export const SkillsSchema = new mongoose.Schema({
+export const SkillSchema = new mongoose.Schema({
   name: String,
   description: String,
-  type: SkillTypes,
+  type: {
+    type: String,
+    enum: SKILL_TYPES,
+  },
 });
