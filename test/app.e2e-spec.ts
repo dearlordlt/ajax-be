@@ -7,8 +7,11 @@ import { AppModule } from './../src/app.module';
 describe('AppController (e2e)', () => {
   let app: INestApplication;
   const authService = {
-    login: (req?) => {
+    login: () => {
       return { accessToken: 'asdasdasd' };
+    },
+    validateUser: () => {
+      return true;
     },
   };
 
@@ -24,11 +27,20 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('(POST):/auth/login', () => {
+  it('(POST):/auth/login', done => {
     return request(app.getHttpServer())
       .post('/auth/login')
-      .send('{ username: "admin", password: "root" }')
-      .expect(401);
+      .send({ username: 'admin', password: 'root' })
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .expect(201)
+      .expect({ accessToken: 'asdasdasd' })
+      .end((err, res) => {
+        if (err) {
+          throw err;
+        }
+        done();
+      });
   });
 
   it('(GET):/auth/test/', () => {
@@ -38,7 +50,8 @@ describe('AppController (e2e)', () => {
       .expect('Hello World');
   });
 
-  afterAll(() => {
+  afterAll(done => {
     app.close();
+    done();
   });
 });
