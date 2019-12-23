@@ -24,14 +24,18 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('(POST)/auth/login', () => {
+  it('(POST):/auth/login', () => {
     return request(app.getHttpServer())
       .post('/auth/login')
-      .send({ username: 'admin', password: 'admin' })
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
+      .send('{ username: "admin", password: "root" }')
+      .expect(401);
+  });
+
+  it('(GET):/auth/test/', () => {
+    return request(app.getHttpServer())
+      .get('/auth/test/')
       .expect(200)
-      .expect({ accessToken: 'asdasdasd' });
+      .expect('Hello World');
   });
 
   afterAll(() => {

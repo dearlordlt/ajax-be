@@ -1,5 +1,5 @@
 import { AuthTokenDto } from './auth/access-token.dto';
-import { Controller, Post, UseGuards, Body, Param } from '@nestjs/common';
+import { Controller, Post, UseGuards, Body, Param, Get } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { UserDto } from './users/user.dto';
 import { AuthService } from './auth/auth.service';
@@ -22,5 +22,10 @@ export class AppController {
   @Post('auth/test/:test')
   async test(@Param('test') test: string) {
     return 'Hello World ' + JSON.stringify(test);
+  }
+
+  @Get('auth/test/')
+  async testGet() {
+    return 'Hello World';
   }
 }
