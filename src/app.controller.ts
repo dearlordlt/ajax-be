@@ -21,7 +21,7 @@ export class AppController {
   @UseGuards(AuthGuard('jwt'))
   @Post('auth/test/:test')
   async test(@Param('test') test: string) {
-    return 'Hello World ' + JSON.stringify(test);
+    return 'Hello World ' + test;
   }
 
   @Get('auth/test/')
