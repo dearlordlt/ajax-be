@@ -1,4 +1,3 @@
-import { SKILL_TYPES } from './../types/types';
 import * as mongoose from 'mongoose';
 
 export const SkillSchema = new mongoose.Schema({
@@ -6,6 +5,6 @@ export const SkillSchema = new mongoose.Schema({
   description: String,
   type: {
     type: String,
-    enum: SKILL_TYPES,
+    enum: ['COMBAT', 'SOCIAL'],
   },
 });
