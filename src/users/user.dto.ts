@@ -6,4 +6,7 @@ export class UserDto {
 
   @ApiProperty()
   readonly password: string;
+
+  @ApiProperty()
+  readonly userId?: string;
 }
