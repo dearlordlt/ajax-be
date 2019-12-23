@@ -1,7 +1,10 @@
 import * as mongoose from 'mongoose';
 
 export const SkillSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    unique: true,
+  },
   description: String,
   type: {
     type: String,
