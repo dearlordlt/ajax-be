@@ -27,7 +27,13 @@ export class AuthService {
         accessToken: this.jwtService.sign(payload),
       };
     } else {
-      throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+      throw new HttpException(
+        {
+          status: HttpStatus.FORBIDDEN,
+          error: 'Wrong credentials provided',
+        },
+        403,
+      );
     }
   }
 }
