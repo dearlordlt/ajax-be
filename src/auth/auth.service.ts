@@ -32,7 +32,7 @@ export class AuthService {
           status: HttpStatus.FORBIDDEN,
           error: 'Wrong credentials provided',
         },
-        403,
+        HttpStatus.FORBIDDEN,
       );
     }
   }
