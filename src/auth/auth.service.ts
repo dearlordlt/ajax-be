@@ -12,7 +12,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async validateUser(user: IUser): Promise<any> {
+  async validateUser(user: IUser): Promise<IUser> {
     return this.usersService.findOne(user);
   }
 
