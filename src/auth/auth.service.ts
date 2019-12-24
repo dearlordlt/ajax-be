@@ -1,5 +1,6 @@
+import { IUser } from './../users/user.interface';
 import { AuthTokenDto } from './access-token.dto';
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { UserDto } from 'src/users/user.dto';
@@ -11,24 +12,22 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async validateUser(username: string, pass: string): Promise<any> {
-    const user = await this.usersService.findOne(username);
-    if (user && user.password === pass) {
-      const { password, ...result } = user;
-      return result;
-    }
-    return null;
+  async validateUser(user: IUser): Promise<any> {
+    return this.usersService.findOne(user);
   }
 
   async login(user: UserDto): Promise<AuthTokenDto> {
-    const validUser = await this.validateUser(user.username, user.password);
+    const validUser: IUser = await this.usersService.findOne(user as IUser);
     if (validUser) {
-      const payload = { username: validUser.username, sub: validUser.userId };
+      const payload = {
+        username: validUser.username,
+        sub: validUser.password,
+      };
       return {
         accessToken: this.jwtService.sign(payload),
       };
     } else {
-      return null;
+      throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
     }
   }
 }

@@ -8,5 +8,8 @@ export class UserDto {
   readonly password: string;
 
   @ApiProperty()
-  readonly userId?: string;
+  readonly email?: string;
+
+  @ApiProperty()
+  readonly role?: string;
 }

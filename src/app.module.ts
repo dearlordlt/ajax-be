@@ -13,6 +13,7 @@ import { SkillsModule } from './skills/skills.module';
     MongooseModule.forRoot('mongodb://localhost/ajax-api', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     }),
     SkillsModule,
   ],
