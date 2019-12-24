@@ -11,8 +11,8 @@ export class SkillsService {
   ) {}
 
   async create(createSkillDto: CreateSkillDto): Promise<Skill> {
-    const createdCat = new this.skillModel(createSkillDto);
-    return await createdCat.save();
+    const createdSkill = new this.skillModel(createSkillDto);
+    return await createdSkill.save();
   }
 
   async findAll(): Promise<Skill[]> {
