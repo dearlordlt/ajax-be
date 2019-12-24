@@ -38,9 +38,24 @@ export class AppController {
   @Get('auth/generate-users/')
   async generateUsers() {
     const users = [
-      { username: 'admin', password: 'admin', role: 'ADMIN' },
-      { username: 'user', password: 'user', role: 'USER' },
-      { username: 'string', password: 'string', role: 'ADMIN' },
+      {
+        username: 'admin',
+        password: 'admin',
+        role: 'ADMIN',
+        email: 'admin@admin.org',
+      },
+      {
+        username: 'user',
+        password: 'user',
+        role: 'USER',
+        email: 'user@user.org',
+      },
+      {
+        username: 'string',
+        password: 'string',
+        role: 'ADMIN',
+        email: 'not-even@user.net',
+      },
     ];
     return this.usersService.createMany(users);
   }
