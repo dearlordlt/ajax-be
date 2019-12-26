@@ -19,13 +19,15 @@ export class AuthService {
   async login(user: UserDto): Promise<AuthTokenDto> {
     const validUser: IUser = await this.usersService.findOne(user as IUser);
     if (validUser) {
-      const payload = {
-        username: validUser.username,
-        sub: validUser._id.toString(),
-        role: validUser.role,
-      };
       return {
-        accessToken: this.jwtService.sign(payload),
+        accessToken: this.jwtService.sign({
+          username: validUser.username,
+          sub: validUser._id.toString(),
+          role: validUser.role,
+        }),
+        username: validUser.username,
+        role: validUser.role,
+        id: validUser.id,
       };
     } else {
       throw new HttpException(
