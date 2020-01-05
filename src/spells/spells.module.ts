@@ -4,6 +4,6 @@ import { SpellsService } from './spells.service';
 
 @Module({
   controllers: [SpellsController],
-  providers: [SpellsService]
+  providers: [SpellsService],
 })
-export class SpellsModule {}
+export class SpellsModule { }
