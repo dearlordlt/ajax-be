@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { SkillsModule } from './skills/skills.module';
 import { MorganModule, MorganInterceptor } from 'nest-morgan';
 import { APP_INTERCEPTOR } from '@nestjs/core';
+import { SpellsModule } from './spells/spells.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     }),
     SkillsModule,
     MorganModule.forRoot(),
+    SpellsModule,
   ],
   controllers: [AppController],
   providers: [
