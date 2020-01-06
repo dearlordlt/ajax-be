@@ -7,5 +7,8 @@ export const UserSchema = new mongoose.Schema({
   },
   password: String,
   email: String,
-  role: { type: String, enum: ['ADMIN', 'USER'] },
+  role: {
+    type: String,
+    enum: ['ADMIN', 'USER'],
+  },
 });

@@ -6,7 +6,17 @@ export const SpellSchema = new mongoose.Schema({
     unique: true,
   },
   description: String,
-  type: {
+  spellType: {
+    type: [Number],
+    validate: {
+      validator: (v: number[]) => v.length === 5,
+    },
+  },
+  spellCostType: {
     type: String,
-    enum: ['NON-COMBAT', 'COMBAT', 'UTILITY', 'FORBIDDEN', 'RITUAL'] },
+    enum: ['NUMBER', 'PERCENTAGE'],
+  },
+  spellCost: {
+    type: Array,
+  },
 });
