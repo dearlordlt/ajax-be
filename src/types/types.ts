@@ -1,3 +1,5 @@
+import { cpus } from "os";
+
 export enum SKILL {
   COMBAT = 'COMBAT',
   SOCIAL = 'SOCIAL',
@@ -6,4 +8,12 @@ export enum SKILL {
 export enum ROLE {
   ADMIN = 'ADMIN',
   USER = 'USER',
+}
+
+export enum SPELL {
+  NonCombat = 'Non-Combat',
+  Combat = 'Combat',
+  Utility = "Utility",
+  Forbidden = 'Forbidden',
+  Ritual = 'Ritual',
 }

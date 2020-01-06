@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-export const SkillSchema = new mongoose.Schema({
+export const SpellSchema = new mongoose.Schema({
   name: {
     type: String,
     unique: true,
@@ -8,5 +8,7 @@ export const SkillSchema = new mongoose.Schema({
   description: String,
   type: {
     type: String,
-    enum: ['COMBAT', 'SOCIAL'] },
+    enum: ['NON-COMBAT', 'COMBAT', "UTILITY", 'FORBIDDEN', 'RITUAL'] },
 });
+
+
