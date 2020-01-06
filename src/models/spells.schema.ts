@@ -8,7 +8,5 @@ export const SpellSchema = new mongoose.Schema({
   description: String,
   type: {
     type: String,
-    enum: ['NON-COMBAT', 'COMBAT', "UTILITY", 'FORBIDDEN', 'RITUAL'] },
+    enum: ['NON-COMBAT', 'COMBAT', 'UTILITY', 'FORBIDDEN', 'RITUAL'] },
 });
-
-

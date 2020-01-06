@@ -10,5 +10,5 @@ Module({
   ],
   controllers: [SpellsController],
   providers: [SpellsService],
-})
+});
 export class SpellsModule {}
