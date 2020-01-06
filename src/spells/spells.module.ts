@@ -4,11 +4,11 @@ import { SpellsService } from './spells.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { SpellSchema } from 'src/models/spells.schema';
 
-Module({
+@Module({
   imports: [
     MongooseModule.forFeature([{ name: 'Spell', schema: SpellSchema }]),
   ],
   controllers: [SpellsController],
   providers: [SpellsService],
-});
+})
 export class SpellsModule {}
