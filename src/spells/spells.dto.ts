@@ -1,0 +1,25 @@
+import { ApiProperty } from '@nestjs/swagger';
+import { SPELL, SPELL_COST_TYPE } from 'src/types/types';
+
+export class CreateSpellDto {
+    @ApiProperty()
+    readonly schoolName: string;
+
+    @ApiProperty()
+    readonly name: string;
+
+    @ApiProperty()
+    readonly description: string;
+
+    @ApiProperty()
+    readonly tier: number;
+
+    @ApiProperty({ type: [Number] })
+    readonly spellType: number[];
+
+    @ApiProperty()
+    readonly spellCostType: SPELL_COST_TYPE;
+
+    @ApiProperty( { type: [Number] } )
+    readonly spellCost: number[];
+  }
