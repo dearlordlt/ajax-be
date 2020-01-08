@@ -7,7 +7,8 @@ export interface MeleeWeapons extends Document {
     swingDices: string[];
     thrustbaseDamage: number;
     thrustDices: string[];
-    weigth: number;
+    strRequirement: number;
+    weight: number;
     cost: string;
     description: string;
   }

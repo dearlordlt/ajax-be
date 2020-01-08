@@ -11,8 +11,8 @@ export class MeleeWeaponsService {
   ) {}
 
   async create(createMeleeweaponsDto: CreateMeleeweaponsDto): Promise<MeleeWeapons> {
-    const createdMeleeWeapom = new this.MeleeWeaponsModule(createMeleeweaponsDto);
-    return await createdMeleeWeapom.save();
+    const createdMeleeWeapon = new this.MeleeWeaponsModule(createMeleeweaponsDto);
+    return await createdMeleeWeapon.save();
   }
 
   async findAll(): Promise<MeleeWeapons[]> {

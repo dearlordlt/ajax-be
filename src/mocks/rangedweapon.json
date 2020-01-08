@@ -1,0 +1,14 @@
+{
+    "name": "Spear",
+    "weaponType": "THROWABLE",
+    "rangeType": "MULTIPLIER",
+    "range": 2,
+    "baseDamage": 0,
+    "damageDice": [
+      "B", "B", "C"
+    ],
+    "strRequirement": 0,
+    "weight": 2,
+    "cost": "40H",
+    "description": "It's a spear!"
+}

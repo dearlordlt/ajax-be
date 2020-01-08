@@ -9,6 +9,7 @@ import { MorganModule, MorganInterceptor } from 'nest-morgan';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { SpellsModule } from './spells/spells.module';
 import { MeleeWeaponsModule } from './melee-weapons/melee-weapons.module';
+import { RangedWeaponsModule } from './ranged-weapons/ranged-weapons.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { MeleeWeaponsModule } from './melee-weapons/melee-weapons.module';
     MorganModule.forRoot(),
     SpellsModule,
     MeleeWeaponsModule,
+    RangedWeaponsModule,
   ],
   controllers: [AppController],
   providers: [
