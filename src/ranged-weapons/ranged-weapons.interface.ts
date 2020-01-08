@@ -8,8 +8,8 @@ export interface RangedWeapons extends Document {
   range: number;
   baseDamage: number;
   damageDice: string[];
-  strReaquirement: number;
+  strRequirement: number;
   weigth: number;
   cost: string;
   description: string;
-    }
+}

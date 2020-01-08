@@ -9,18 +9,18 @@ import { CreateRangedWeaponsDto } from './ranged-weapons.dto';
 @ApiTags('Ranged-weapons')
 @Controller('ranged-weapons')
 export class RangedWeaponsController {
-  constructor(private readonly rangedWeaponssService: RangedWeaponsService) {}
+  constructor(private readonly rangedWeaponsService: RangedWeaponsService) {}
 
   @Get()
   @UseGuards(AuthGuard('jwt'))
   findAll(): Promise<RangedWeapons[]> {
-    return this.rangedWeaponssService.findAll();
+    return this.rangedWeaponsService.findAll();
   }
 
   @ApiBody({ type: CreateRangedWeaponsDto })
   @UseGuards(AuthGuard('jwt'))
   @Post()
   create(@Body() createRangedWeaponsDto: CreateRangedWeaponsDto): Promise<RangedWeapons> {
-    return this.rangedWeaponssService.create(createRangedWeaponsDto);
+    return this.rangedWeaponsService.create(createRangedWeaponsDto);
   }
 }

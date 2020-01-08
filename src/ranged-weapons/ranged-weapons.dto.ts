@@ -21,7 +21,7 @@ export class CreateRangedWeaponsDto {
     readonly damageDice: string[];
 
     @ApiProperty()
-    readonly strReaquirement: number;
+    readonly strRequirement: number;
 
     @ApiProperty()
     readonly weigth: number;
@@ -31,4 +31,4 @@ export class CreateRangedWeaponsDto {
 
     @ApiProperty()
     readonly description: string;
-  }
+}

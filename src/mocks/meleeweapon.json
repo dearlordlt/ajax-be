@@ -15,18 +15,3 @@
     "cost": "20H",
     "description": "string"
   }
-
-  {
-    "name": "Spear",
-    "weaponType": "THROWABLE",
-    "rangeType": "MULTIPLIER",
-    "range": 2,
-    "baseDamage": 0,
-    "damageDice": [
-      "B", "B", "C"
-    ],
-    "strReaquirement": 0,
-    "weigth": 2,
-    "cost": "40H",
-    "description": "It's a spear!"
-  }
