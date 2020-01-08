@@ -10,6 +10,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { SpellsModule } from './spells/spells.module';
 import { MeleeWeaponsModule } from './melee-weapons/melee-weapons.module';
 import { RangedWeaponsModule } from './ranged-weapons/ranged-weapons.module';
+import { ShieldsModule } from './shields/shields.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { RangedWeaponsModule } from './ranged-weapons/ranged-weapons.module';
     SpellsModule,
     MeleeWeaponsModule,
     RangedWeaponsModule,
+    ShieldsModule,
   ],
   controllers: [AppController],
   providers: [
