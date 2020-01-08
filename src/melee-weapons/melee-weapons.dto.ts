@@ -11,13 +11,13 @@ export class CreateMeleeweaponsDto {
     readonly swingbaseDamage: number;
 
     @ApiProperty()
-    readonly swingbaseDices: string;
+    readonly swingDices: string[];
 
     @ApiProperty()
     readonly thrustbaseDamage: number;
 
     @ApiProperty()
-    readonly thrustbaseDices: string;
+    readonly thrustDices: string[];
 
     @ApiProperty()
     readonly weigth: number;
