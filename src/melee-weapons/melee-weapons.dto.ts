@@ -20,7 +20,7 @@ export class CreateMeleeweaponsDto {
     readonly thrustDices: string[];
 
     @ApiProperty()
-    readonly weigth: number;
+    readonly weight: number;
 
     @ApiProperty()
     readonly cost: string;

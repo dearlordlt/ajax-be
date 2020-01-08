@@ -24,7 +24,7 @@ export class CreateRangedWeaponsDto {
     readonly strRequirement: number;
 
     @ApiProperty()
-    readonly weigth: number;
+    readonly weight: number;
 
     @ApiProperty()
     readonly cost: string;

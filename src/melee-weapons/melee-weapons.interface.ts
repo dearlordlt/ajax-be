@@ -8,7 +8,7 @@ export interface MeleeWeapons extends Document {
     thrustbaseDamage: number;
     thrustDices: string[];
     strRequirement: number;
-    weigth: number;
+    weight: number;
     cost: string;
     description: string;
   }

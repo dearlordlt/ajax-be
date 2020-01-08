@@ -11,7 +11,7 @@
     "thrustDices": [
       "B","B","C"
     ],
-    "weigth": 0,
+    "weight": 0,
     "cost": "20H",
     "description": "string"
   }

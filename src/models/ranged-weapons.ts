@@ -17,7 +17,7 @@ export const RangedWeaponsSchema = new mongoose.Schema({
   baseDamage: [Number],
   damageDice: [String],
   strRequirement: Number,
-  weigth: Number,
+  weight: Number,
   cost: String,
   description: String,
 });

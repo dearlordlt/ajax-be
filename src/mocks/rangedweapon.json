@@ -7,8 +7,8 @@
     "damageDice": [
       "B", "B", "C"
     ],
-    "strReaquirement": 0,
-    "weigth": 2,
+    "strRequirement": 0,
+    "weight": 2,
     "cost": "40H",
     "description": "It's a spear!"
 }
