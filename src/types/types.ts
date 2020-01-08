@@ -20,3 +20,14 @@ export enum SPELL_COST_TYPE {
   NUMBER = 'NUMBER',
   PERCENTAGE = 'PERCENTAGE',
 }
+
+export enum MELLEWEAPONS {
+  DAGGER = 'COMBAT',
+  SWORD = 'SWORD',
+  RAPIER = 'RAPIER',
+  MACES = 'MACES',
+  AXES = 'AXES',
+  SPEARS = 'SPEARS',
+  POLEARM = 'POLEARM',
+  FLAIL = 'FLAIL',
+}
