@@ -9,7 +9,7 @@ export const SpellSchema = new mongoose.Schema({
   spellType: {
     type: [Number],
     validate: {
-      validator: (v: number[]) => v.length === 5,
+      validator: (v: number[]) => v.length === 6,
     },
   },
   spellCostType: {

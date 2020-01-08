@@ -1,4 +1,4 @@
-import { SPELL, SPELL_COST_TYPE } from '../types/types';
+import { SPELL_COST_TYPE } from '../types/types';
 import { Document } from 'mongoose';
 
 export interface Spell extends Document {

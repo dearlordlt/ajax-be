@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { SPELL, SPELL_COST_TYPE } from 'src/types/types';
+import { SPELL_COST_TYPE } from 'src/types/types';
 
 export class CreateSpellDto {
     @ApiProperty()
