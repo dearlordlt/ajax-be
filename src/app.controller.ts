@@ -16,7 +16,7 @@ export class AppController {
   constructor(
     private readonly authService: AuthService,
     private readonly usersService: UsersService,
-  ) {}
+  ) { }
 
   @ApiBody({ type: UserDto })
   @Post('auth/login')
@@ -58,5 +58,19 @@ export class AppController {
       },
     ];
     return this.usersService.createMany(users);
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @ApiBody({ type: UserDto })
+  @Post('auth/register')
+  async registerUser(@Body() user: UserDto): Promise<any> {
+    return this.authService.registerUser(user).then((data: IUser) => {
+      return {
+        _id: data._id,
+        username: data.username,
+        email: data.email,
+        role: data.role,
+      };
+    });
   }
 }

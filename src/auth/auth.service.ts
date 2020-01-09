@@ -10,10 +10,14 @@ export class AuthService {
   constructor(
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
-  ) {}
+  ) { }
 
   async validateUser(user: IUser): Promise<IUser> {
     return this.usersService.findOne(user);
+  }
+
+  async registerUser(user: UserDto): Promise<IUser> {
+    return this.usersService.create(user);
   }
 
   async login(user: UserDto): Promise<AuthTokenDto> {
