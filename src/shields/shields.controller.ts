@@ -1,10 +1,10 @@
-import { Controller, Get, UseGuards, Post, Body, Param, Delete } from '@nestjs/common';
+import { Controller, Get, UseGuards, Post, Body, Param, Delete, Put } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags, ApiBody } from '@nestjs/swagger';
 import { ShieldsService } from './shields.service';
 import { AuthGuard } from '@nestjs/passport';
 import { Shields } from './shields.interface';
-import { CreateShieldsDto } from './shields.dto';
 import { DeleteResponse } from 'src/types/types';
+import { ShieldsDto } from './shields.dto';
 
 @ApiBearerAuth()
 @ApiTags('Shields')
@@ -18,11 +18,11 @@ export class ShieldsController {
     return this.shieldsService.findAll();
   }
 
-  @ApiBody({ type: CreateShieldsDto })
+  @ApiBody({ type: ShieldsDto })
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  create(@Body() createShieldsDto: CreateShieldsDto): Promise<Shields> {
-    return this.shieldsService.create(createShieldsDto);
+  create(@Body() shieldsDto: ShieldsDto): Promise<Shields> {
+    return this.shieldsService.create(shieldsDto);
   }
 
   @Delete(':id')
@@ -30,4 +30,11 @@ export class ShieldsController {
   delete(@Param('id') id: string): Promise<DeleteResponse> {
     return this.shieldsService.delete(id);
   }
+
+  @ApiBody({ type: ShieldsDto })
+  @Put(':id')
+  @UseGuards(AuthGuard('jwt'))
+  update(@Body() shieldsDto: ShieldsDto, @Param('id') id: string): Promise<Shields> {
+    return this.shieldsService.update(id, shieldsDto);
+ }
 }

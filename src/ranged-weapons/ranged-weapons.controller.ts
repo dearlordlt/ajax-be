@@ -1,9 +1,10 @@
-import { Controller, Get, UseGuards, Post, Body } from '@nestjs/common';
+import { Controller, Get, UseGuards, Post, Body, Put, Param, Delete } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags, ApiBody } from '@nestjs/swagger';
 import { RangedWeaponsService } from './ranged-weapons.service';
 import { AuthGuard } from '@nestjs/passport';
 import { RangedWeapons } from './ranged-weapons.interface';
-import { CreateRangedWeaponsDto } from './ranged-weapons.dto';
+import { RangedWeaponsDto } from './ranged-weapons.dto';
+import { DeleteResponse } from 'src/types/types';
 
 @ApiBearerAuth()
 @ApiTags('Ranged-weapons')
@@ -17,10 +18,23 @@ export class RangedWeaponsController {
     return this.rangedWeaponsService.findAll();
   }
 
-  @ApiBody({ type: CreateRangedWeaponsDto })
+  @ApiBody({ type: RangedWeaponsDto })
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  create(@Body() createRangedWeaponsDto: CreateRangedWeaponsDto): Promise<RangedWeapons> {
-    return this.rangedWeaponsService.create(createRangedWeaponsDto);
+  create(@Body() rangedWeaponsDto: RangedWeaponsDto): Promise<RangedWeapons> {
+    return this.rangedWeaponsService.create(rangedWeaponsDto);
   }
+
+  @Delete(':id')
+  @UseGuards(AuthGuard('jwt'))
+  delete(@Param('id') id: string): Promise<DeleteResponse> {
+    return this.rangedWeaponsService.delete(id);
+  }
+
+  @ApiBody({ type: RangedWeaponsDto })
+  @Put(':id')
+  @UseGuards(AuthGuard('jwt'))
+  update(@Body() rangedweaponsDto: RangedWeaponsDto, @Param('id') id: string): Promise<RangedWeapons> {
+    return this.rangedWeaponsService.update(id, rangedweaponsDto);
+ }
 }

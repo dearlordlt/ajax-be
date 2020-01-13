@@ -1,7 +1,7 @@
-import { Controller, Body, Get, Post, UseGuards, Delete, Param } from '@nestjs/common';
+import { Controller, Body, Get, Post, UseGuards, Delete, Param, Put } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiBody } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
-import { CreateMeleeweaponsDto } from './melee-weapons.dto';
+import { MeleeweaponsDto } from './melee-weapons.dto';
 import { MeleeWeapons } from './melee-weapons.interface';
 import { MeleeWeaponsService } from './melee-weapons.service';
 import { DeleteResponse } from 'src/types/types';
@@ -18,11 +18,11 @@ export class MeleeWeaponsController {
     return this.meleeWeaponsService.findAll();
   }
 
-  @ApiBody({ type: CreateMeleeweaponsDto })
+  @ApiBody({ type: MeleeweaponsDto })
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  create(@Body() createMeleeweaponsDto: CreateMeleeweaponsDto): Promise<MeleeWeapons> {
-    return this.meleeWeaponsService.create(createMeleeweaponsDto);
+  create(@Body() meleeweaponsDto: MeleeweaponsDto): Promise<MeleeWeapons> {
+    return this.meleeWeaponsService.create(meleeweaponsDto);
   }
 
   @Delete(':id')
@@ -31,4 +31,10 @@ export class MeleeWeaponsController {
     return this.meleeWeaponsService.delete(id);
   }
 
+  @ApiBody({ type: MeleeweaponsDto })
+  @Put(':id')
+  @UseGuards(AuthGuard('jwt'))
+  update(@Body() meleeweaponsDto: MeleeweaponsDto, @Param('id') id: string): Promise<MeleeWeapons> {
+    return this.meleeWeaponsService.update(id, meleeweaponsDto);
+ }
 }

@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { SPELL_COST_TYPE } from 'src/types/types';
 
-export class CreateSpellDto {
+export class SpellDto {
     @ApiProperty()
     readonly schoolName: string;
 
