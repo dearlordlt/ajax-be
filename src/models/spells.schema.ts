@@ -5,6 +5,7 @@ export const SpellSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
+  schoolName: String,
   description: String,
   spellType: {
     type: [Number],

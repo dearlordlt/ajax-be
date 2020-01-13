@@ -1,7 +1,7 @@
 import { Skill } from './skills.interface';
 import { SkillsService } from './skills.service';
-import { Controller, Get, Post, Body, UseGuards, Delete, Param } from '@nestjs/common';
-import { CreateSkillDto } from './skills.dto';
+import { Controller, Get, Post, Body, UseGuards, Delete, Param, Put } from '@nestjs/common';
+import { SkillDto } from './skills.dto';
 import { ApiBearerAuth, ApiTags, ApiBody } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { DeleteResponse } from 'src/types/types';
@@ -18,11 +18,11 @@ export class SkillsController {
     return this.skillService.findAll();
   }
 
-  @ApiBody({ type: CreateSkillDto })
+  @ApiBody({ type: SkillDto })
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  create(@Body() createItemDto: CreateSkillDto): Promise<Skill> {
-    return this.skillService.create(createItemDto);
+  create(@Body() skillDto: SkillDto): Promise<Skill> {
+    return this.skillService.create(skillDto);
   }
 
   @Delete(':id')
@@ -30,4 +30,10 @@ export class SkillsController {
   delete(@Param('id') id: string): Promise<DeleteResponse> {
     return this.skillService.delete(id);
   }
+  @ApiBody({ type: SkillDto })
+  @Put(':id')
+  @UseGuards(AuthGuard('jwt'))
+  update(@Body() skillDto: SkillDto, @Param('id') id: string): Promise<Skill> {
+    return this.skillService.update(id, skillDto);
+ }
 }

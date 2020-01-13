@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateMeleeweaponsDto {
+export class MeleeweaponsDto {
     @ApiProperty()
     readonly name: string;
 

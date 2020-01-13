@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { RANGEDWEAPONS, RANGEDWEAPONSTYPE } from 'src/types/types';
+import { RANGEDWEAPONSTYPE, RANGEDWEAPONS } from 'src/types/types';
 
-export class CreateRangedWeaponsDto {
+export class RangedWeaponsDto {
     @ApiProperty()
     readonly name: string;
 
