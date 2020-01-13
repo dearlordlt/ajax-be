@@ -1,15 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { RANGEDWEAPONSTYPE, RANGEDWEAPONS } from 'src/types/types';
+import { RANGED_WEAPONSTYPE, RANGE_STR_MULTIPLIER } from 'src/types/types';
 
 export class RangedWeaponsDto {
     @ApiProperty()
     readonly name: string;
 
     @ApiProperty()
-    readonly weaponType: RANGEDWEAPONSTYPE;
+    readonly weaponType: RANGED_WEAPONSTYPE;
 
     @ApiProperty()
-    readonly rangeType: RANGEDWEAPONS;
+    readonly rangeType: RANGE_STR_MULTIPLIER;
 
     @ApiProperty()
     readonly range: number;

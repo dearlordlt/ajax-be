@@ -1,5 +1,5 @@
 import { Controller, Get, UseGuards, Post, Body, Put, Param, Delete } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags, ApiBody } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiBody, ApiProperty } from '@nestjs/swagger';
 import { RangedWeaponsService } from './ranged-weapons.service';
 import { AuthGuard } from '@nestjs/passport';
 import { RangedWeapons } from './ranged-weapons.interface';

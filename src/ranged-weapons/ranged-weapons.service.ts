@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { RangedWeapons } from './ranged-weapons.interface';
 import { RangedWeaponsDto } from './ranged-weapons.dto';
 import { DeleteResponse } from 'src/types/types';
+import e = require('express');
 
 @Injectable()
 export class RangedWeaponsService {
