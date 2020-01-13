@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, UseGuards, Post, Body, Param, Delete } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags, ApiBody } from '@nestjs/swagger';
 import { ShieldsService } from './shields.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -25,6 +25,8 @@ export class ShieldsController {
     return this.shieldsService.create(createShieldsDto);
   }
 
+  @Delete(':id')
+  @UseGuards(AuthGuard('jwt'))
   delete(@Param('id') id: string): Promise<DeleteResponse> {
     return this.shieldsService.delete(id);
   }
