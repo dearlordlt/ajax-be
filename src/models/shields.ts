@@ -9,4 +9,4 @@ export const ShieldsSchema = new mongoose.Schema({
   defence: Number,
   hp: Number,
   cost: String,
-}).index({name: 1});
+});
