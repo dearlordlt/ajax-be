@@ -20,4 +20,4 @@ export const RangedWeaponsSchema = new mongoose.Schema({
   weight: Number,
   cost: String,
   description: String,
-});
+}).index({name: 1});

@@ -19,4 +19,4 @@ export const SpellSchema = new mongoose.Schema({
   spellCost: {
     type: Array,
   },
-});
+}).index({name: 1});

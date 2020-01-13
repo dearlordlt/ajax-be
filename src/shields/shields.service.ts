@@ -3,6 +3,7 @@ import { CreateShieldsDto } from './shields.dto';
 import { Shields } from './shields.interface';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { DeleteResponse } from 'src/types/types';
 
 @Injectable()
 export class ShieldsService {
@@ -18,4 +19,8 @@ export class ShieldsService {
     async findAll(): Promise<Shields[]> {
     return await this.ShieldsModule.find().exec();
     }
+
+    async delete(id: string): Promise<DeleteResponse> {
+      return await this.ShieldsModule.deleteOne( {_id: id} );
+   }
 }

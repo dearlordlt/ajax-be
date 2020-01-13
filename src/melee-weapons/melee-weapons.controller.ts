@@ -1,9 +1,10 @@
-import { Controller, Body, Get, Post, UseGuards } from '@nestjs/common';
+import { Controller, Body, Get, Post, UseGuards, Delete, Param } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiBody } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { CreateMeleeweaponsDto } from './melee-weapons.dto';
 import { MeleeWeapons } from './melee-weapons.interface';
 import { MeleeWeaponsService } from './melee-weapons.service';
+import { DeleteResponse } from 'src/types/types';
 
 @ApiBearerAuth()
 @ApiTags('Melee-weapons')
@@ -23,4 +24,11 @@ export class MeleeWeaponsController {
   create(@Body() createMeleeweaponsDto: CreateMeleeweaponsDto): Promise<MeleeWeapons> {
     return this.meleeWeaponsService.create(createMeleeweaponsDto);
   }
+
+  @Delete(':id')
+  @UseGuards(AuthGuard('jwt'))
+  delete(@Param('id') id: string): Promise<DeleteResponse> {
+    return this.meleeWeaponsService.delete(id);
+  }
+
 }

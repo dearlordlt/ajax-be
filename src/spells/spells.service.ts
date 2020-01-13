@@ -3,6 +3,7 @@ import { Model } from 'mongoose';
 import { Spell } from './spells.interface';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateSpellDto } from './spells.dto';
+import { DeleteResponse } from 'src/types/types';
 
 @Injectable()
 export class SpellsService {
@@ -18,4 +19,8 @@ export class SpellsService {
   async findAll(): Promise<Spell[]> {
     return await this.spellModel.find().exec();
   }
+
+  async delete(id: string): Promise<DeleteResponse> {
+    return await this.spellModel.deleteOne( {_id: id} );
+ }
 }

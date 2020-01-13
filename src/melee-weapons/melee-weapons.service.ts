@@ -3,6 +3,7 @@ import { Model } from 'mongoose';
 import { MeleeWeapons } from './melee-weapons.interface';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateMeleeweaponsDto } from './melee-weapons.dto';
+import { DeleteResponse } from 'src/types/types';
 
 @Injectable()
 export class MeleeWeaponsService {
@@ -18,4 +19,8 @@ export class MeleeWeaponsService {
   async findAll(): Promise<MeleeWeapons[]> {
     return await this.MeleeWeaponsModule.find().exec();
   }
+
+  async delete(id: string): Promise<DeleteResponse> {
+    return await this.MeleeWeaponsModule.deleteOne( {_id: id} );
+ }
 }

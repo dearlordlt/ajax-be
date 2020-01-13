@@ -6,9 +6,12 @@ export const UserSchema = new mongoose.Schema({
     unique: true,
   },
   password: String,
-  email: String,
+  email: {
+    type: String,
+    unique: true,
+  },
   role: {
     type: String,
     enum: ['ADMIN', 'USER'],
   },
-});
+}).index({name: 1});
