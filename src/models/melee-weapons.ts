@@ -15,4 +15,4 @@ export const MeleeWeaponSchema = new mongoose.Schema({
   weight: Number,
   cost: String,
   description: String,
-});
+}).index({name: 1});

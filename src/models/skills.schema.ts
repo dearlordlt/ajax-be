@@ -12,4 +12,4 @@ export const SkillSchema = new mongoose.Schema({
     type: String,
     enum: ['COMBAT', 'SOCIAL'],
   },
-});
+}).index({name: 1});

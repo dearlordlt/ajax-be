@@ -1,9 +1,10 @@
 import { Spell } from './spells.interface';
 import { SpellsService } from './spells.service';
-import { Controller, UseGuards, Get, Post, Body } from '@nestjs/common';
+import { Controller, UseGuards, Get, Post, Body, Delete, Param } from '@nestjs/common';
 import { CreateSpellDto } from './spells.dto';
 import { ApiTags, ApiBearerAuth, ApiBody } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
+import { DeleteResponse } from 'src/types/types';
 
 @ApiBearerAuth()
 @ApiTags('Spells')
@@ -24,5 +25,11 @@ export class SpellsController {
   @Post()
   create(@Body() createItemDto: CreateSpellDto): Promise<Spell> {
     return this.spellService.create(createItemDto);
+  }
+
+  @Delete(':id')
+  @UseGuards(AuthGuard('jwt'))
+  delete(@Param('id') id: string): Promise<DeleteResponse> {
+    return this.spellService.delete(id);
   }
 }

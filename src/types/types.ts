@@ -42,3 +42,9 @@ export enum RANGEDWEAPONSTYPE {
   BALISTIC = 'BALISTIC',
   BLACKPOWDER = 'BLACKPOWDER',
 }
+
+export interface DeleteResponse {
+  n?: number;
+  ok?: number;
+  deletedCount?: number;
+}

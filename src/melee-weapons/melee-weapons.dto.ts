@@ -27,4 +27,4 @@ export class CreateMeleeweaponsDto {
 
     @ApiProperty()
     readonly description: string;
-  }
+}

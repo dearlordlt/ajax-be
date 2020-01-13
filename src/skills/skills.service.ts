@@ -3,6 +3,7 @@ import { Model } from 'mongoose';
 import { Skill } from './skills.interface';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateSkillDto } from './skills.dto';
+import { DeleteResponse } from 'src/types/types';
 
 @Injectable()
 export class SkillsService {
@@ -18,4 +19,8 @@ export class SkillsService {
   async findAll(): Promise<Skill[]> {
     return await this.skillModel.find().exec();
   }
+
+  async delete(id: string): Promise<DeleteResponse> {
+    return await this.skillModel.deleteOne( {_id: id} );
+ }
 }
