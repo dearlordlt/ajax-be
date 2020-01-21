@@ -38,5 +38,4 @@ export class CharactersController {
     return this.charactersService.update(id, charactersDto);
  }
 
-
 }
