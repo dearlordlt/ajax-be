@@ -11,6 +11,7 @@ import { SpellsModule } from './spells/spells.module';
 import { MeleeWeaponsModule } from './melee-weapons/melee-weapons.module';
 import { RangedWeaponsModule } from './ranged-weapons/ranged-weapons.module';
 import { ShieldsModule } from './shields/shields.module';
+import { CharacterModule } from './characters/characters.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { ShieldsModule } from './shields/shields.module';
     MeleeWeaponsModule,
     RangedWeaponsModule,
     ShieldsModule,
+    CharacterModule,
   ],
   controllers: [AppController],
   providers: [
