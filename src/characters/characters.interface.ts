@@ -4,4 +4,6 @@ export interface Characters extends Document {
     name: string;
     age: number;
     description: string;
+    createdAt?: Date;
+    updatedAt?: Date;
 }

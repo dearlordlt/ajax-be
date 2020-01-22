@@ -12,6 +12,7 @@ export class CharactersService {
   ) {}
 
   async create(charactersDto: CharactersDto): Promise<Characters> {
+    charactersDto.createdAt = new Date();
     const createdCharacter = new this.CharactersModule(charactersDto);
     return await createdCharacter.save();
   }
@@ -25,6 +26,7 @@ export class CharactersService {
   }
 
   async update(id: string, charactersDto: CharactersDto): Promise<Characters> {
+    charactersDto.updatedAt = new Date();
     return await this.CharactersModule.findByIdAndUpdate(id, charactersDto, {new: true});
   }
 

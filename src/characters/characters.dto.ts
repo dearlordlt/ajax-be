@@ -10,4 +10,8 @@ export class CharactersDto {
     @ApiProperty()
     readonly description: string;
 
+    public createdAt: Date;
+
+    public updatedAt: Date;
+
 }

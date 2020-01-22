@@ -7,4 +7,6 @@ export const CharactersSchema = new mongoose.Schema({
   },
   age: Number,
   description: String,
+  createdAt: Date,
+  updatedAt: Date,
 }).index({name: 1});
