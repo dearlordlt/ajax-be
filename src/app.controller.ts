@@ -35,6 +35,12 @@ export class AppController {
     return 'Hello World';
   }
 
+  @UseGuards(AuthGuard('jwt'))
+  @Post('auth/keep-alive/')
+  async keepAlive() {
+    return { success: true };
+  }
+
   @Get('auth/generate-users/')
   async generateUsers() {
     const users = [
