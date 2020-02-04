@@ -3,11 +3,11 @@
     "range": [
       0,1
     ],
-    "swingbaseDamage": 0,
+    "swingBaseDamage": 0,
     "swingDices": [
       "B","B","T"
     ],
-    "thrustbaseDamage": 0,
+    "thrustBaseDamage": 0,
     "thrustDices": [
       "B","B","C"
     ],

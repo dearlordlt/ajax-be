@@ -8,9 +8,9 @@ export const MeleeWeaponSchema = new mongoose.Schema({
   range: {
     type: [Number],
   },
-  swingbaseDamage: Number,
+  swingBaseDamage: Number,
   swingDices: [String],
-  thrustbaseDamage: Number,
+  thrustBaseDamage: Number,
   thrustDices: [String],
   weight: Number,
   cost: String,

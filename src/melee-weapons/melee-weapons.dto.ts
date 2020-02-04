@@ -8,13 +8,13 @@ export class MeleeweaponsDto {
     readonly range: number[];
 
     @ApiProperty()
-    readonly swingbaseDamage: number;
+    readonly swingBaseDamage: number;
 
     @ApiProperty()
     readonly swingDices: string[];
 
     @ApiProperty()
-    readonly thrustbaseDamage: number;
+    readonly thrustBaseDamage: number;
 
     @ApiProperty()
     readonly thrustDices: string[];
