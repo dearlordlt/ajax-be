@@ -7,6 +7,7 @@ export const SpellSchema = new mongoose.Schema({
   },
   schoolName: String,
   description: String,
+  tier: Number,
   spellType: {
     type: [Number],
     validate: {
