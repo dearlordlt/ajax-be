@@ -8,7 +8,7 @@ export const SkillSchema = new mongoose.Schema({
   },
   tier: Number,
   description: String,
-  type: {
+  skillType: {
     type: String,
     enum: ['COMBAT', 'SOCIAL'],
   },

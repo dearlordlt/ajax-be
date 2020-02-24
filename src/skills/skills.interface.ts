@@ -4,5 +4,5 @@ import { Document } from 'mongoose';
 export interface Skill extends Document {
   name: string;
   description: string;
-  type: SKILL;
+  skillType: SKILL;
 }

@@ -9,5 +9,5 @@ export class SkillDto {
   readonly description: string;
 
   @ApiProperty()
-  readonly type: SKILL;
+  readonly skillType: SKILL;
 }
