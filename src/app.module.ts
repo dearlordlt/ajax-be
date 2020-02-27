@@ -12,6 +12,8 @@ import { MeleeWeaponsModule } from './melee-weapons/melee-weapons.module';
 import { RangedWeaponsModule } from './ranged-weapons/ranged-weapons.module';
 import { ShieldsModule } from './shields/shields.module';
 import { CharacterModule } from './characters/characters.module';
+import { BeastsAndCreaturesController } from './beasts-and-creatures/beasts-and-creatures.controller';
+import { BeastsAndCreaturesModule } from './beasts-and-creatures/beasts-and-creatures.module';
 
 @Module({
   imports: [
@@ -29,6 +31,7 @@ import { CharacterModule } from './characters/characters.module';
     RangedWeaponsModule,
     ShieldsModule,
     CharacterModule,
+    BeastsAndCreaturesModule,
   ],
   controllers: [AppController],
   providers: [

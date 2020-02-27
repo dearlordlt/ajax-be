@@ -1,0 +1,32 @@
+{
+  "npc": "Wolf",
+  "attributes": {
+    "str": 9,
+    "dex": 11,
+    "ref": 11,
+    "hp": 8,
+    "move": {
+      "ground": 1,
+      "flight": 10 
+    }
+  },
+  "talents": {
+    "sense": 2,
+    "fitness": 2,
+    "awareness": 2,
+    "intelligence": 2
+  
+  },
+  "stats": {
+    "att": 12,
+    "def": 12,
+    "dmg": "1 + 1xBBT"
+  },
+  "abilities": [
+    "Attack",
+    "Guard",
+    "Track",
+    "Hunt"
+  ],
+  "weight": "35KG"
+}
