@@ -11,7 +11,7 @@ export const SpellSchema = new mongoose.Schema({
   spellType: {
     type: [Number],
     validate: {
-      validator: (v: number[]) => v.length === 6,
+      validator: (v: number[]) => v.length === 7,
     },
   },
   spellCostType: {

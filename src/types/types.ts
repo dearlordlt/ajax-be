@@ -14,6 +14,7 @@ export enum SPELL {
   UTILITY = 'UTILITY',
   FORBIDDEN = 'FORBIDDEN',
   RITUAL = 'RITUAL',
+  BLESSING = 'BLESSING',
 }
 
 export enum SPELL_COST_TYPE {
