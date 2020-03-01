@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { SKILL } from 'src/types/types';
+import { IsIn } from 'class-validator';
 
 export class SkillDto {
   @ApiProperty()
@@ -9,5 +10,6 @@ export class SkillDto {
   readonly description: string;
 
   @ApiProperty()
+  @IsIn(['COMBAT', 'SOCIAL'])
   readonly skillType: SKILL;
 }
