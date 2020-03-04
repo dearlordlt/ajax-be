@@ -26,5 +26,8 @@ export class MeleeweaponsDto {
     readonly cost: string;
 
     @ApiProperty()
+    readonly strRequirement: number;
+
+    @ApiProperty()
     readonly description: string;
 }
