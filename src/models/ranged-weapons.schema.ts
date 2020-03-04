@@ -14,7 +14,7 @@ export const RangedWeaponsSchema = new mongoose.Schema({
     type: String,
     enum: ['MULTIPLIER', 'NUMBER'],
   },
-  baseDamage: [Number],
+  baseDamage: Number,
   damageDice: [String],
   strRequirement: Number,
   weight: Number,
