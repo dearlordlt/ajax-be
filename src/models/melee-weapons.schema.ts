@@ -12,6 +12,7 @@ export const MeleeWeaponSchema = new mongoose.Schema({
   swingDices: [String],
   thrustBaseDamage: Number,
   thrustDices: [String],
+  strRequirement: Number,
   weight: Number,
   cost: String,
   description: String,
