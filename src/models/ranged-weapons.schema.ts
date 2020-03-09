@@ -7,7 +7,7 @@ export const RangedWeaponsSchema = new mongoose.Schema({
   },
   weaponType: {
     type: String,
-    enum: ['THROWABLE', 'BALISTIC', 'BLACKPOWDER'],
+    enum: ['THROWABLE', 'BALLISTIC', 'BLACKPOWDER'],
   },
   range: Number,
   rangeType: {

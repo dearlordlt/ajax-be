@@ -1,11 +1,11 @@
 import { Document } from 'mongoose';
 
-export interface BeastsAndCreatures extends Document {
+export interface IBeasts extends Document {
   npc: string;
   attributes: IAttributes;
   talents: ITalents;
   stats: IStats;
-  Abilities: string[];
+  abilities: string[];
   weight: string;
 }
 

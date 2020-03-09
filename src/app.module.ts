@@ -12,8 +12,10 @@ import { MeleeWeaponsModule } from './melee-weapons/melee-weapons.module';
 import { RangedWeaponsModule } from './ranged-weapons/ranged-weapons.module';
 import { ShieldsModule } from './shields/shields.module';
 import { CharacterModule } from './characters/characters.module';
-import { BeastsAndCreaturesController } from './beasts-and-creatures/beasts-and-creatures.controller';
-import { BeastsAndCreaturesModule } from './beasts-and-creatures/beasts-and-creatures.module';
+import { BeastsController } from './beasts/beasts.controller';
+import { BeastsModule } from './beasts/beasts.module';
+import { AdvantagesController } from './advantages/advantages.controller';
+import { AdvantagesModule } from './advantages/advantages.module';
 
 @Module({
   imports: [
@@ -31,9 +33,10 @@ import { BeastsAndCreaturesModule } from './beasts-and-creatures/beasts-and-crea
     RangedWeaponsModule,
     ShieldsModule,
     CharacterModule,
-    BeastsAndCreaturesModule,
+    BeastsModule,
+    AdvantagesModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, AdvantagesController],
   providers: [
     AppService,
     {

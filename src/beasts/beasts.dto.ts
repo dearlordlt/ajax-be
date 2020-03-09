@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IAttributes, ITalents, IStats } from './beasts-and-creatures.interface';
+import { IAttributes, ITalents, IStats } from './beasts.interface';
 
-export class BeastsAndCreaturesDto {
+export class BeastsDto {
     @ApiProperty()
     readonly npc: string;
 

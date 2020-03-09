@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-export const BeastsAndCreaturesSchema = new mongoose.Schema({
+export const BeastsSchema = new mongoose.Schema({
   npc: {
     type: String,
     unique: true,
