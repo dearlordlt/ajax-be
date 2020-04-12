@@ -7,6 +7,5 @@ export interface ISpell extends Document {
   tier: number;
   description: string;
   spellType: number[];
-  spellCostType: SPELL_COST_TYPE;
   spellCost: number[];
 }

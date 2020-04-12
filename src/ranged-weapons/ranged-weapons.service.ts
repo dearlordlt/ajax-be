@@ -5,7 +5,7 @@ import { IRangedWeapons } from './ranged-weapons.interface';
 import { RangedWeaponDto } from './ranged-weapons.dto';
 import { DeleteResponse } from 'src/types/types';
 import e = require('express');
-import { IRWsquery } from './rwsquery.interface';
+import { IRWQuery } from './rwsquery.interface';
 
 @Injectable()
 export class RangedWeaponsService {
@@ -20,7 +20,7 @@ export class RangedWeaponsService {
 
   async findAll(query: any): Promise<IRangedWeapons[]> {
 
-    const RWsQuery: IRWsquery = {};
+    const RWsQuery: IRWQuery = {};
 
     if (query.name) {
       RWsQuery.name = { $regex: query.name, $options: 'i'};

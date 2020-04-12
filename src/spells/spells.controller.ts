@@ -1,8 +1,8 @@
 import { ISpell } from './spells.interface';
 import { SpellsService } from './spells.service';
-import { Controller, UseGuards, Get, Post, Body, Delete, Param, Put } from '@nestjs/common';
+import { Controller, UseGuards, Get, Post, Body, Delete, Param, Put, Query } from '@nestjs/common';
 import { SpellDto } from './spells.dto';
-import { ApiTags, ApiBearerAuth, ApiBody } from '@nestjs/swagger';
+import { ApiTags, ApiBearerAuth, ApiBody, ApiQuery } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { DeleteResponse } from 'src/types/types';
 
@@ -15,9 +15,14 @@ export class SpellsController {
   constructor(private readonly spellService: SpellsService) {}
 
   @Get()
+  @ApiQuery({ name: 'name', required: false })
+  @ApiQuery({ name: 'schoolName', required: false })
+  @ApiQuery({ name: 'tier', required: false })
+  @ApiQuery({ name: 'spellType', required: false })
+  @ApiQuery({ name: 'spellCost', required: false })
   @UseGuards(AuthGuard('jwt'))
-  findAll(): Promise<ISpell[]> {
-    return this.spellService.findAll();
+  findAll(@Query() query: string): Promise<ISpell[]> {
+    return this.spellService.findAll(query);
   }
 
   @ApiBody({ type: SpellDto })

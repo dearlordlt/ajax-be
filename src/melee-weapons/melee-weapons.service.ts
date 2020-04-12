@@ -4,7 +4,7 @@ import { IMeleeWeapons } from './melee-weapons.interface';
 import { InjectModel } from '@nestjs/mongoose';
 import { MeleeWeaponDto } from './melee-weapons.dto';
 import { DeleteResponse } from 'src/types/types';
-import { IMWsquery } from './mwsquery.interface';
+import { IMWQuery } from './mwsquery.interface';
 
 @Injectable()
 export class MeleeWeaponsService {
@@ -19,7 +19,7 @@ export class MeleeWeaponsService {
 
   async findAll(query: any): Promise<IMeleeWeapons[]> {
 
-  const RWsQuery: IMWsquery = {};
+  const RWsQuery: IMWQuery = {};
 
   if (query.name) {
     RWsQuery.name = { $regex: query.name, $options: 'i'};

@@ -1,6 +1,6 @@
 import { IRegexQuery } from 'src/types/types';
 
-export interface IMWsquery {
+export interface IMWQuery {
     name?: IRegexQuery;
     range?: number[];
     strRequirement?: number;
