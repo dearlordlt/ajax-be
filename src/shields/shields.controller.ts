@@ -1,5 +1,5 @@
-import { Controller, Get, UseGuards, Post, Body, Param, Delete, Put } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags, ApiBody } from '@nestjs/swagger';
+import { Controller, Get, UseGuards, Post, Body, Param, Delete, Put, Query } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags, ApiBody, ApiQuery } from '@nestjs/swagger';
 import { ShieldsService } from './shields.service';
 import { AuthGuard } from '@nestjs/passport';
 import { IShields } from './shields.interface';
@@ -13,9 +13,13 @@ export class ShieldsController {
   constructor(private readonly shieldsService: ShieldsService) {}
 
   @Get()
+  @ApiQuery({ name: 'name', required: false })
+  @ApiQuery({ name: 'weight', required: false })
+  @ApiQuery({ name: 'defence', required: false })
+  @ApiQuery({ name: 'hp', required: false })
   @UseGuards(AuthGuard('jwt'))
-  findAll(): Promise<IShields[]> {
-    return this.shieldsService.findAll();
+  findAll(@Query() query: string): Promise<IShields[]> {
+    return this.shieldsService.findAll(query);
   }
 
   @ApiBody({ type: ShieldsDto })
@@ -38,3 +42,4 @@ export class ShieldsController {
     return this.shieldsService.update(id, shieldsDto);
  }
 }
+

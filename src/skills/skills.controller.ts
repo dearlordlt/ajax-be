@@ -1,8 +1,8 @@
 import { ISkill } from './skills.interface';
 import { SkillsService } from './skills.service';
-import { Controller, Get, Post, Body, UseGuards, Delete, Param, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Delete, Param, Put, Query } from '@nestjs/common';
 import { SkillDto } from './skills.dto';
-import { ApiBearerAuth, ApiTags, ApiBody } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiBody, ApiQuery } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { DeleteResponse } from 'src/types/types';
 
@@ -13,9 +13,11 @@ export class SkillsController {
   constructor(private readonly skillService: SkillsService) {}
 
   @Get()
+  @ApiQuery({ name: 'name', required: false })
+  @ApiQuery({ name: 'skillType', required: false })
   @UseGuards(AuthGuard('jwt'))
-  findAll(): Promise<ISkill[]> {
-    return this.skillService.findAll();
+  findAll(@Query() query: string): Promise<ISkill[]> {
+    return this.skillService.findAll(query);
   }
 
   @ApiBody({ type: SkillDto })

@@ -4,6 +4,7 @@ import { ISkill } from './skills.interface';
 import { InjectModel } from '@nestjs/mongoose';
 import { SkillDto } from './skills.dto';
 import { DeleteResponse } from 'src/types/types';
+import { ISkillQuery } from './skillsquery.interface';
 
 @Injectable()
 export class SkillsService {
@@ -16,8 +17,20 @@ export class SkillsService {
     return await createdSkill.save();
   }
 
-  async findAll(): Promise<ISkill[]> {
-    return await this.skillModel.find().exec();
+  async findAll(query: any): Promise<ISkill[]> {
+
+    const skillQuery: ISkillQuery = {};
+
+    if (query.name) {
+      skillQuery.name = { $regex: query.name, $options: 'i'};
+    }
+
+    if (query.skillType) {
+      skillQuery.skillType = query.skillType;
+    }
+
+    console.dir(query);
+    return await this.skillModel.find(skillQuery).exec();
   }
 
   async delete(id: string): Promise<DeleteResponse> {

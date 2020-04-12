@@ -1,3 +1,8 @@
+export interface  IRegexQuery   {
+  $regex: string;
+  $options: string;
+}
+
 export enum SKILL {
   COMBAT = 'COMBAT',
   SOCIAL = 'SOCIAL',

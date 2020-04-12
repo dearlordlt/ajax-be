@@ -4,6 +4,8 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { DeleteResponse } from 'src/types/types';
 import { ShieldsDto } from './shields.dto';
+import { IShieldsQuery } from './shieldsquery.interface';
+import { async } from 'rxjs/internal/scheduler/async';
 
 @Injectable()
 export class ShieldsService {
@@ -16,8 +18,27 @@ export class ShieldsService {
     return await createdShields.save();
   }
 
-  async findAll(): Promise<IShields[]> {
-    return await this.ShieldsModule.find().exec();
+  async findAll(query: any): Promise<IShields[]> {
+
+    const shieldsQuery: IShieldsQuery = {};
+
+    if (query.name) {
+      shieldsQuery.name = { $regex: query.name, $options: 'i'};
+    }
+
+    if (query.weight) {
+      shieldsQuery.weight = query.weight;
+    }
+
+    if (query.defence) {
+      shieldsQuery.defence = query.defence;
+    }
+
+    if (query.hp) {
+      shieldsQuery.hp = query.hp;
+    }
+
+    return await this.ShieldsModule.find(shieldsQuery).exec();
   }
 
   async delete(id: string): Promise<DeleteResponse> {
