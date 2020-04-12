@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-export interface Characters extends Document {
+export interface ICharacter extends Document {
     name: string;
     age: number;
     description: string;
