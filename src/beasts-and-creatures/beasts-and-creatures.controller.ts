@@ -3,7 +3,7 @@ import { ApiTags, ApiBearerAuth, ApiBody } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { DeleteResponse } from 'src/types/types';
 import { BeastsAndCreaturesDto } from './beasts-and-creatures.dto';
-import { BeastsAndCreatures } from './beasts-and-creatures.interface';
+import { IBeastsAndCreatures } from './beasts-and-creatures.interface';
 import { BeastsAndCreaturesService } from './beasts-and-creatures.service';
 
 @ApiBearerAuth()
@@ -14,14 +14,14 @@ export class BeastsAndCreaturesController {
 
   @Get()
   @UseGuards(AuthGuard('jwt'))
-  findAll(): Promise<BeastsAndCreatures[]> {
+  findAll(): Promise<IBeastsAndCreatures[]> {
     return this.beastsAndCreaturesService.findAll();
   }
 
   @ApiBody({ type: BeastsAndCreaturesDto })
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  create(@Body() beastsAndCreaturesDto: BeastsAndCreaturesDto): Promise<BeastsAndCreatures> {
+  create(@Body() beastsAndCreaturesDto: BeastsAndCreaturesDto): Promise<IBeastsAndCreatures> {
     return this.beastsAndCreaturesService.create(beastsAndCreaturesDto);
   }
 
@@ -34,7 +34,7 @@ export class BeastsAndCreaturesController {
   @ApiBody({ type: BeastsAndCreaturesDto })
   @Put(':id')
   @UseGuards(AuthGuard('jwt'))
-  update(@Body() beastsAndCreaturesDto: BeastsAndCreaturesDto, @Param('id') id: string): Promise<BeastsAndCreatures> {
+  update(@Body() beastsAndCreaturesDto: BeastsAndCreaturesDto, @Param('id') id: string): Promise<IBeastsAndCreatures> {
     return this.beastsAndCreaturesService.update(id, beastsAndCreaturesDto);
  }
 }

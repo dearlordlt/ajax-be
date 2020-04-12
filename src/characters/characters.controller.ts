@@ -1,7 +1,7 @@
 import { Controller, Get, UseGuards, Post, Body, Delete, Param, Put } from '@nestjs/common';
 import { CharactersService } from './characters.service';
 import { ApiBearerAuth, ApiTags, ApiBody } from '@nestjs/swagger';
-import { Characters } from './characters.interface';
+import { ICharacters } from './characters.interface';
 import { AuthGuard } from '@nestjs/passport';
 import { DeleteResponse } from 'src/types/types';
 import { CharactersDto } from './characters.dto';
@@ -14,14 +14,14 @@ export class CharactersController {
 
   @Get()
   @UseGuards(AuthGuard('jwt'))
-  findAll(): Promise<Characters[]> {
+  findAll(): Promise<ICharacters[]> {
     return this.charactersService.findAll();
   }
 
   @ApiBody({ type: CharactersDto })
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  create(@Body() charactersDto: CharactersDto): Promise<Characters> {
+  create(@Body() charactersDto: CharactersDto): Promise<ICharacters> {
     return this.charactersService.create(charactersDto);
   }
 
@@ -34,7 +34,7 @@ export class CharactersController {
   @ApiBody({ type: CharactersDto })
   @Put(':id')
   @UseGuards(AuthGuard('jwt'))
-  update(@Body() charactersDto: CharactersDto, @Param('id') id: string): Promise<Characters> {
+  update(@Body() charactersDto: CharactersDto, @Param('id') id: string): Promise<ICharacters> {
     return this.charactersService.update(id, charactersDto);
  }
 

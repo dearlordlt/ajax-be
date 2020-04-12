@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Shields } from './shields.interface';
+import { IShields } from './shields.interface';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { DeleteResponse } from 'src/types/types';
@@ -8,15 +8,15 @@ import { ShieldsDto } from './shields.dto';
 @Injectable()
 export class ShieldsService {
   constructor(
-    @InjectModel('Shield') private readonly ShieldsModule: Model<Shields>,
+    @InjectModel('Shield') private readonly ShieldsModule: Model<IShields>,
   ) {}
 
-  async create(shieldsDto: ShieldsDto): Promise<Shields> {
+  async create(shieldsDto: ShieldsDto): Promise<IShields> {
     const createdShields = new this.ShieldsModule(shieldsDto);
     return await createdShields.save();
   }
 
-  async findAll(): Promise<Shields[]> {
+  async findAll(): Promise<IShields[]> {
     return await this.ShieldsModule.find().exec();
   }
 
@@ -24,7 +24,7 @@ export class ShieldsService {
     return await this.ShieldsModule.deleteOne({ _id: id });
   }
 
-  async update(id: string, shieldsDto: ShieldsDto): Promise<Shields> {
+  async update(id: string, shieldsDto: ShieldsDto): Promise<IShields> {
     return await this.ShieldsModule.findByIdAndUpdate(id, shieldsDto, {new: true});
   }
 }

@@ -1,4 +1,4 @@
-import { Skill } from './skills.interface';
+import { ISkill } from './skills.interface';
 import { SkillsService } from './skills.service';
 import { Controller, Get, Post, Body, UseGuards, Delete, Param, Put } from '@nestjs/common';
 import { SkillDto } from './skills.dto';
@@ -14,14 +14,14 @@ export class SkillsController {
 
   @Get()
   @UseGuards(AuthGuard('jwt'))
-  findAll(): Promise<Skill[]> {
+  findAll(): Promise<ISkill[]> {
     return this.skillService.findAll();
   }
 
   @ApiBody({ type: SkillDto })
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  create(@Body() skillDto: SkillDto): Promise<Skill> {
+  create(@Body() skillDto: SkillDto): Promise<ISkill> {
     return this.skillService.create(skillDto);
   }
 
@@ -33,7 +33,7 @@ export class SkillsController {
   @ApiBody({ type: SkillDto })
   @Put(':id')
   @UseGuards(AuthGuard('jwt'))
-  update(@Body() skillDto: SkillDto, @Param('id') id: string): Promise<Skill> {
+  update(@Body() skillDto: SkillDto, @Param('id') id: string): Promise<ISkill> {
     return this.skillService.update(id, skillDto);
  }
 }

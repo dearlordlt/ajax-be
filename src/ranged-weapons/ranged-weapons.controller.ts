@@ -2,7 +2,7 @@ import { Controller, Get, UseGuards, Post, Body, Put, Param, Delete } from '@nes
 import { ApiBearerAuth, ApiTags, ApiBody, ApiProperty } from '@nestjs/swagger';
 import { RangedWeaponsService } from './ranged-weapons.service';
 import { AuthGuard } from '@nestjs/passport';
-import { RangedWeapons } from './ranged-weapons.interface';
+import { IRangedWeapons } from './ranged-weapons.interface';
 import { RangedWeaponsDto } from './ranged-weapons.dto';
 import { DeleteResponse } from 'src/types/types';
 
@@ -14,14 +14,14 @@ export class RangedWeaponsController {
 
   @Get()
   @UseGuards(AuthGuard('jwt'))
-  findAll(): Promise<RangedWeapons[]> {
+  findAll(): Promise<IRangedWeapons[]> {
     return this.rangedWeaponsService.findAll();
   }
 
   @ApiBody({ type: RangedWeaponsDto })
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  create(@Body() rangedWeaponsDto: RangedWeaponsDto): Promise<RangedWeapons> {
+  create(@Body() rangedWeaponsDto: RangedWeaponsDto): Promise<IRangedWeapons> {
     return this.rangedWeaponsService.create(rangedWeaponsDto);
   }
 
@@ -34,7 +34,7 @@ export class RangedWeaponsController {
   @ApiBody({ type: RangedWeaponsDto })
   @Put(':id')
   @UseGuards(AuthGuard('jwt'))
-  update(@Body() rangedweaponsDto: RangedWeaponsDto, @Param('id') id: string): Promise<RangedWeapons> {
+  update(@Body() rangedweaponsDto: RangedWeaponsDto, @Param('id') id: string): Promise<IRangedWeapons> {
     return this.rangedWeaponsService.update(id, rangedweaponsDto);
  }
 }

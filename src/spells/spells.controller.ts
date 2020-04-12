@@ -1,4 +1,4 @@
-import { Spell } from './spells.interface';
+import { ISpell } from './spells.interface';
 import { SpellsService } from './spells.service';
 import { Controller, UseGuards, Get, Post, Body, Delete, Param, Put } from '@nestjs/common';
 import { SpellDto } from './spells.dto';
@@ -16,14 +16,14 @@ export class SpellsController {
 
   @Get()
   @UseGuards(AuthGuard('jwt'))
-  findAll(): Promise<Spell[]> {
+  findAll(): Promise<ISpell[]> {
     return this.spellService.findAll();
   }
 
   @ApiBody({ type: SpellDto })
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  create(@Body() spellDto: SpellDto): Promise<Spell> {
+  create(@Body() spellDto: SpellDto): Promise<ISpell> {
     return this.spellService.create(spellDto);
   }
 
@@ -35,7 +35,7 @@ export class SpellsController {
   @ApiBody({ type: SpellDto })
   @Put(':id')
   @UseGuards(AuthGuard('jwt'))
-  update(@Body() spellDto: SpellDto, @Param('id') id: string): Promise<Spell> {
+  update(@Body() spellDto: SpellDto, @Param('id') id: string): Promise<ISpell> {
     return this.spellService.update(id, spellDto);
  }
 }
