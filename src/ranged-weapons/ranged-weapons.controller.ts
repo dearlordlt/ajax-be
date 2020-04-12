@@ -1,10 +1,10 @@
-import { Controller, Get, UseGuards, Post, Body, Put, Param, Delete } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags, ApiBody, ApiProperty } from '@nestjs/swagger';
+import { Controller, Get, UseGuards, Post, Body, Put, Param, Delete, Query } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags, ApiBody, ApiProperty, ApiQuery } from '@nestjs/swagger';
 import { RangedWeaponsService } from './ranged-weapons.service';
 import { AuthGuard } from '@nestjs/passport';
 import { IRangedWeapons } from './ranged-weapons.interface';
 import { RangedWeaponsDto } from './ranged-weapons.dto';
-import { DeleteResponse } from 'src/types/types';
+import { DeleteResponse, RANGED_WEAPONSTYPE, RANGE_STR_MULTIPLIER } from 'src/types/types';
 
 @ApiBearerAuth()
 @ApiTags('Ranged-weapons')
@@ -13,10 +13,23 @@ export class RangedWeaponsController {
   constructor(private readonly rangedWeaponsService: RangedWeaponsService) {}
 
   @Get()
+  @ApiQuery({ name: 'name', required: false })
+  @ApiQuery({ name: 'weaponType', required: false })
+  @ApiQuery({ name: 'rangeType', required: false })
+  @ApiQuery({ name: 'range', required: false })
+  @ApiQuery({ name: 'strRequirement', required: false })
+  @ApiQuery({ name: 'weight', required: false })
   @UseGuards(AuthGuard('jwt'))
-  findAll(): Promise<IRangedWeapons[]> {
-    return this.rangedWeaponsService.findAll();
+  findAll(@Query() query: string): Promise<IRangedWeapons[]> {
+    return this.rangedWeaponsService.findAll(query);
   }
+
+  name?: string;
+  weaponType?: RANGED_WEAPONSTYPE;
+  rangeType?: RANGE_STR_MULTIPLIER;
+  range?: number;
+  strRequirement?: number;
+  weight?: number;
 
   @ApiBody({ type: RangedWeaponsDto })
   @UseGuards(AuthGuard('jwt'))
@@ -34,7 +47,7 @@ export class RangedWeaponsController {
   @ApiBody({ type: RangedWeaponsDto })
   @Put(':id')
   @UseGuards(AuthGuard('jwt'))
-  update(@Body() rangedweaponsDto: RangedWeaponsDto, @Param('id') id: string): Promise<IRangedWeapons> {
-    return this.rangedWeaponsService.update(id, rangedweaponsDto);
+  update(@Body() rangedWeaponsDto: RangedWeaponsDto, @Param('id') id: string): Promise<IRangedWeapons> {
+    return this.rangedWeaponsService.update(id, rangedWeaponsDto);
  }
 }
