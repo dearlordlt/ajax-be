@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-export interface MeleeWeapons extends Document {
+export interface IMeleeWeapons extends Document {
     name: string;
     range: number[];
     swingBaseDamage: number;
