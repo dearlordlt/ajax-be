@@ -1,7 +1,7 @@
-import { Controller, Body, Get, Post, UseGuards, Delete, Param, Put } from '@nestjs/common';
-import { ApiTags, ApiBearerAuth, ApiBody } from '@nestjs/swagger';
+import { Controller, Body, Get, Post, UseGuards, Delete, Param, Put, Query } from '@nestjs/common';
+import { ApiTags, ApiBearerAuth, ApiBody, ApiQuery } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
-import { MeleeWeaponsDto } from './melee-weapons.dto';
+import { MeleeWeaponDto } from './melee-weapons.dto';
 import { IMeleeWeapons } from './melee-weapons.interface';
 import { MeleeWeaponsService } from './melee-weapons.service';
 import { DeleteResponse } from 'src/types/types';
@@ -13,16 +13,21 @@ export class MeleeWeaponsController {
   constructor(private readonly meleeWeaponsService: MeleeWeaponsService) {}
 
   @Get()
+  @ApiQuery({ name: 'name', required: false })
+  @ApiQuery({ name: 'range', required: false })
+  @ApiQuery({ name: 'strRequirement', required: false })
+  @ApiQuery({ name: 'weight', required: false })
+  @ApiQuery({ name: 'weaponSkills', required: false })
   @UseGuards(AuthGuard('jwt'))
-  findAll(): Promise<IMeleeWeapons[]> {
-    return this.meleeWeaponsService.findAll();
+  findAll(@Query() query: string): Promise<IMeleeWeapons[]> {
+    return this.meleeWeaponsService.findAll(query);
   }
 
-  @ApiBody({ type: MeleeWeaponsDto })
+  @ApiBody({ type: MeleeWeaponDto })
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  create(@Body() meleeWeaponsDto: MeleeWeaponsDto): Promise<IMeleeWeapons> {
-    return this.meleeWeaponsService.create(meleeWeaponsDto);
+  create(@Body() meleeWeaponDto: MeleeWeaponDto): Promise<IMeleeWeapons> {
+    return this.meleeWeaponsService.create(meleeWeaponDto);
   }
 
   @Delete(':id')
@@ -31,10 +36,10 @@ export class MeleeWeaponsController {
     return this.meleeWeaponsService.delete(id);
   }
 
-  @ApiBody({ type: MeleeWeaponsDto })
+  @ApiBody({ type: MeleeWeaponDto })
   @Put(':id')
   @UseGuards(AuthGuard('jwt'))
-  update(@Body() meleeWeaponsDto: MeleeWeaponsDto, @Param('id') id: string): Promise<IMeleeWeapons> {
-    return this.meleeWeaponsService.update(id, meleeWeaponsDto);
+  update(@Body() meleeWeaponDto: MeleeWeaponDto, @Param('id') id: string): Promise<IMeleeWeapons> {
+    return this.meleeWeaponsService.update(id, meleeWeaponDto);
  }
 }

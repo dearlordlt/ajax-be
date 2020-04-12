@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { IRangedWeapons } from './ranged-weapons.interface';
-import { RangedWeaponsDto } from './ranged-weapons.dto';
+import { RangedWeaponDto } from './ranged-weapons.dto';
 import { DeleteResponse } from 'src/types/types';
 import e = require('express');
 import { IRWsquery } from './rwsquery.interface';
@@ -13,8 +13,8 @@ export class RangedWeaponsService {
     @InjectModel('RangedWeapon') private readonly RangedWeaponsModule: Model<IRangedWeapons>,
   ) {}
 
-  async create(rangedWeaponsDto: RangedWeaponsDto): Promise<IRangedWeapons> {
-    const createdRangedWeapon = new this.RangedWeaponsModule(rangedWeaponsDto);
+  async create(rangedWeaponDto: RangedWeaponDto): Promise<IRangedWeapons> {
+    const createdRangedWeapon = new this.RangedWeaponsModule(rangedWeaponDto);
     return await createdRangedWeapon.save();
   }
 
@@ -51,7 +51,7 @@ export class RangedWeaponsService {
     return await this.RangedWeaponsModule.deleteOne( {_id: id} );
  }
 
-  async update(id: string, rangedWeaponsDto: RangedWeaponsDto): Promise<IRangedWeapons> {
-    return await this.RangedWeaponsModule.findByIdAndUpdate(id, rangedWeaponsDto, {new: true});
+  async update(id: string, rangedWeaponDto: RangedWeaponDto): Promise<IRangedWeapons> {
+    return await this.RangedWeaponsModule.findByIdAndUpdate(id, rangedWeaponDto, {new: true});
   }
 }

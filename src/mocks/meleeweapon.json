@@ -1,17 +1,22 @@
 {
-    "name": "Dagger",
-    "range": [
-      0,1
-    ],
-    "swingBaseDamage": 0,
-    "swingDices": [
-      "B","B","T"
-    ],
-    "thrustBaseDamage": 0,
-    "thrustDices": [
-      "B","B","C"
-    ],
-    "weight": 0,
-    "cost": "20H",
-    "description": "string"
-  }
+  "name": "Rapier",
+  "range": [
+    1,2
+  ],
+  "swingBaseDamage": 1,
+  "swingDices": [
+    "BBT"
+  ],
+  "thrustBaseDamage": 2,
+  "thrustDices": [
+    "BBC"
+  ],
+  "weight": 2,
+  "cost": "arm and a leg",
+  "strRequirement": 2,
+  "weaponSkills": [
+    "sword",
+    "fencing"
+  ],
+  "description": "Nice weapon"
+}

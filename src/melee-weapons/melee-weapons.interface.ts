@@ -11,4 +11,5 @@ export interface IMeleeWeapons extends Document {
     weight: number;
     cost: string;
     description: string;
+    weaponSkills: string[];
   }
