@@ -29,7 +29,6 @@ export class SkillsService {
       skillQuery.skillType = query.skillType;
     }
 
-    console.dir(query);
     return await this.skillModel.find(skillQuery).exec();
   }
 

@@ -42,4 +42,3 @@ export class ShieldsController {
     return this.shieldsService.update(id, shieldsDto);
  }
 }
-
