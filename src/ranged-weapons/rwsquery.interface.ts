@@ -1,4 +1,4 @@
-import { RANGED_WEAPONSTYPE, RANGE_STR_MULTIPLIER, IRegexQuery } from "src/types/types";
+import { RANGED_WEAPONSTYPE, RANGE_STR_MULTIPLIER, IRegexQuery } from 'src/types/types';
 
 export interface IRWsquery {
     name?: IRegexQuery;
