@@ -1,9 +1,9 @@
 import { Document } from 'mongoose';
-import { RANGED_WEAPONSTYPE, RANGE_STR_MULTIPLIER } from 'src/types/types';
+import { RANGED_WEAPONS_TYPE, RANGE_STR_MULTIPLIER } from 'src/types/types';
 
-export interface RangedWeapons extends Document {
+export interface IRangedWeapons extends Document {
   name: string;
-  weaponType: RANGED_WEAPONSTYPE;
+  weaponType: RANGED_WEAPONS_TYPE;
   rangeType: RANGE_STR_MULTIPLIER;
   range: number;
   baseDamage: number;

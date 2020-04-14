@@ -17,9 +17,6 @@ export class SpellDto {
     @ApiProperty({ type: [Number] })
     readonly spellType: number[];
 
-    @ApiProperty()
-    readonly spellCostType: SPELL_COST_TYPE;
-
     @ApiProperty( { type: [Number] } )
     readonly spellCost: number[];
   }

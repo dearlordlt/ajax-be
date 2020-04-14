@@ -1,10 +1,10 @@
-import { Controller, Get, UseGuards, Post, Body, Put, Param, Delete } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags, ApiBody, ApiProperty } from '@nestjs/swagger';
+import { Controller, Get, UseGuards, Post, Body, Put, Param, Delete, Query } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags, ApiBody, ApiProperty, ApiQuery } from '@nestjs/swagger';
 import { RangedWeaponsService } from './ranged-weapons.service';
 import { AuthGuard } from '@nestjs/passport';
-import { RangedWeapons } from './ranged-weapons.interface';
-import { RangedWeaponsDto } from './ranged-weapons.dto';
-import { DeleteResponse } from 'src/types/types';
+import { IRangedWeapons } from './ranged-weapons.interface';
+import { RangedWeaponDto } from './ranged-weapons.dto';
+import { DeleteResponse, RANGED_WEAPONS_TYPE, RANGE_STR_MULTIPLIER } from 'src/types/types';
 
 @ApiBearerAuth()
 @ApiTags('Ranged-weapons')
@@ -13,16 +13,29 @@ export class RangedWeaponsController {
   constructor(private readonly rangedWeaponsService: RangedWeaponsService) {}
 
   @Get()
+  @ApiQuery({ name: 'name', required: false })
+  @ApiQuery({ name: 'weaponType', required: false })
+  @ApiQuery({ name: 'rangeType', required: false })
+  @ApiQuery({ name: 'range', required: false })
+  @ApiQuery({ name: 'strRequirement', required: false })
+  @ApiQuery({ name: 'weight', required: false })
   @UseGuards(AuthGuard('jwt'))
-  findAll(): Promise<RangedWeapons[]> {
-    return this.rangedWeaponsService.findAll();
+  findAll(@Query() query: string): Promise<IRangedWeapons[]> {
+    return this.rangedWeaponsService.findAll(query);
   }
 
-  @ApiBody({ type: RangedWeaponsDto })
+  name?: string;
+  weaponType?: RANGED_WEAPONS_TYPE;
+  rangeType?: RANGE_STR_MULTIPLIER;
+  range?: number;
+  strRequirement?: number;
+  weight?: number;
+
+  @ApiBody({ type: RangedWeaponDto })
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  create(@Body() rangedWeaponsDto: RangedWeaponsDto): Promise<RangedWeapons> {
-    return this.rangedWeaponsService.create(rangedWeaponsDto);
+  create(@Body() rangedWeaponDto: RangedWeaponDto): Promise<IRangedWeapons> {
+    return this.rangedWeaponsService.create(rangedWeaponDto);
   }
 
   @Delete(':id')
@@ -31,10 +44,10 @@ export class RangedWeaponsController {
     return this.rangedWeaponsService.delete(id);
   }
 
-  @ApiBody({ type: RangedWeaponsDto })
+  @ApiBody({ type: RangedWeaponDto })
   @Put(':id')
   @UseGuards(AuthGuard('jwt'))
-  update(@Body() rangedweaponsDto: RangedWeaponsDto, @Param('id') id: string): Promise<RangedWeapons> {
-    return this.rangedWeaponsService.update(id, rangedweaponsDto);
+  update(@Body() rangedWeaponDto: RangedWeaponDto, @Param('id') id: string): Promise<IRangedWeapons> {
+    return this.rangedWeaponsService.update(id, rangedWeaponDto);
  }
 }

@@ -1,30 +1,54 @@
 import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
-import { MeleeWeapons } from './melee-weapons.interface';
+import { IMeleeWeapons } from './melee-weapons.interface';
 import { InjectModel } from '@nestjs/mongoose';
-import { MeleeweaponsDto } from './melee-weapons.dto';
+import { MeleeWeaponDto } from './melee-weapons.dto';
 import { DeleteResponse } from 'src/types/types';
+import { IMWQuery } from './mwsquery.interface';
 
 @Injectable()
 export class MeleeWeaponsService {
   constructor(
-    @InjectModel('MeleeWeapon') private readonly MeleeWeaponsModule: Model<MeleeWeapons>,
+    @InjectModel('MeleeWeapon') private readonly MeleeWeaponsModule: Model<IMeleeWeapons>,
   ) {}
 
-  async create(meleeweaponsDto: MeleeweaponsDto): Promise<MeleeWeapons> {
-    const createdMeleeWeapon = new this.MeleeWeaponsModule(meleeweaponsDto);
+  async create(meleeWeaponDto: MeleeWeaponDto): Promise<IMeleeWeapons> {
+    const createdMeleeWeapon = new this.MeleeWeaponsModule(meleeWeaponDto);
     return await createdMeleeWeapon.save();
   }
 
-  async findAll(): Promise<MeleeWeapons[]> {
-    return await this.MeleeWeaponsModule.find().exec();
+  async findAll(query: any): Promise<IMeleeWeapons[]> {
+
+  const RWsQuery: IMWQuery = {};
+
+  if (query.name) {
+    RWsQuery.name = { $regex: query.name, $options: 'i'};
+    }
+
+  if (query.range) {
+    RWsQuery.range = query.range;
   }
+
+  if (query.strRequirement) {
+    RWsQuery.strRequirement = query.strRequirement;
+  }
+
+  if (query.weight) {
+    RWsQuery.weight = query.weight;
+  }
+
+  if (query.weaponSkills) {
+    RWsQuery.weaponSkills = query.weaponSkills;
+  }
+
+  return await this.MeleeWeaponsModule.find(RWsQuery).exec();
+}
 
   async delete(id: string): Promise<DeleteResponse> {
     return await this.MeleeWeaponsModule.deleteOne( {_id: id} );
  }
 
-  async update(id: string, meleeweaponsDto: MeleeweaponsDto): Promise<MeleeWeapons> {
-   return await this.MeleeWeaponsModule.findByIdAndUpdate(id, meleeweaponsDto, {new: true});
+  async update(id: string, meleeWeaponDto: MeleeWeaponDto): Promise<IMeleeWeapons> {
+   return await this.MeleeWeaponsModule.findByIdAndUpdate(id, meleeWeaponDto, {new: true});
  }
 }

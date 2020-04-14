@@ -1,3 +1,8 @@
+export interface  IRegexQuery   {
+  $regex: string;
+  $options: string;
+}
+
 export enum SKILL {
   COMBAT = 'COMBAT',
   SOCIAL = 'SOCIAL',
@@ -38,7 +43,7 @@ export enum RANGE_STR_MULTIPLIER {
   NUMBER = 'NUMBER',
 }
 
-export enum RANGED_WEAPONSTYPE {
+export enum RANGED_WEAPONS_TYPE {
   THROWABLE = 'THROWABLE',
   BALISTIC = 'BALISTIC',
   BLACKPOWDER = 'BLACKPOWDER',

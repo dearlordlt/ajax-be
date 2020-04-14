@@ -14,10 +14,6 @@ export const SpellSchema = new mongoose.Schema({
       validator: (v: number[]) => v.length === 7,
     },
   },
-  spellCostType: {
-    type: String,
-    enum: ['NUMBER', 'PERCENTAGE'],
-  },
   spellCost: {
     type: Array,
   },

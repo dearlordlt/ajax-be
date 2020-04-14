@@ -1,8 +1,8 @@
-import { Spell } from './spells.interface';
+import { ISpell } from './spells.interface';
 import { SpellsService } from './spells.service';
-import { Controller, UseGuards, Get, Post, Body, Delete, Param, Put } from '@nestjs/common';
+import { Controller, UseGuards, Get, Post, Body, Delete, Param, Put, Query } from '@nestjs/common';
 import { SpellDto } from './spells.dto';
-import { ApiTags, ApiBearerAuth, ApiBody } from '@nestjs/swagger';
+import { ApiTags, ApiBearerAuth, ApiBody, ApiQuery } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { DeleteResponse } from 'src/types/types';
 
@@ -15,15 +15,20 @@ export class SpellsController {
   constructor(private readonly spellService: SpellsService) {}
 
   @Get()
+  @ApiQuery({ name: 'name', required: false })
+  @ApiQuery({ name: 'schoolName', required: false })
+  @ApiQuery({ name: 'tier', required: false })
+  @ApiQuery({ name: 'spellType', required: false })
+  @ApiQuery({ name: 'spellCost', required: false })
   @UseGuards(AuthGuard('jwt'))
-  findAll(): Promise<Spell[]> {
-    return this.spellService.findAll();
+  findAll(@Query() query: string): Promise<ISpell[]> {
+    return this.spellService.findAll(query);
   }
 
   @ApiBody({ type: SpellDto })
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  create(@Body() spellDto: SpellDto): Promise<Spell> {
+  create(@Body() spellDto: SpellDto): Promise<ISpell> {
     return this.spellService.create(spellDto);
   }
 
@@ -35,7 +40,7 @@ export class SpellsController {
   @ApiBody({ type: SpellDto })
   @Put(':id')
   @UseGuards(AuthGuard('jwt'))
-  update(@Body() spellDto: SpellDto, @Param('id') id: string): Promise<Spell> {
+  update(@Body() spellDto: SpellDto, @Param('id') id: string): Promise<ISpell> {
     return this.spellService.update(id, spellDto);
  }
 }
