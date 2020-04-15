@@ -4,6 +4,6 @@ export interface ISpellQuery {
   schoolName?: string;
   name?: IRegexQuery;
   tier?: number;
-  spellType?: number[];
+  spellType?: string[];
   spellCost?: number[];
 }
