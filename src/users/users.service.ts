@@ -17,6 +17,10 @@ export class UsersService {
     });
   }
 
+  async find(user: IUser): Promise <any> {
+    return this.userModel.find(user);
+  }
+
   async create(user: UserDto): Promise<IUser> {
     const createdUser = new this.userModel(hashUser(user));
     return await createdUser.save();

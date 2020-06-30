@@ -1,13 +1,12 @@
 {
-    "schoolName": "SCHOOL OF ETERIOD",
-    "name": "Heal",
-    "description": "Heals 1/2/3 damage, can’t heal the same person more than once a day.",
-    "tier": 1,
-    "spellType": [
-      1,0,0,0,0,0
-    ],
-    "spellCostType": "NUMBER",
-    "spellCost": [
-      1
-    ]
-  }
+  "schoolName": "Heal",
+  "name": "SCHOOL OF ETERIOD",
+  "description": "  Heals SS damage, poison or intoxication effect, can’t heal the same person more than once a day. Needs to touch the wound.",
+  "tier": 1,
+  "spellType": [
+    "Non-Combat", "Combat"
+  ],
+  "spellCost": [
+    2
+  ]
+}

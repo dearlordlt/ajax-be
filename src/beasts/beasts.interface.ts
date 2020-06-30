@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-export interface IBeastsAndCreatures extends Document {
+export interface IBeasts extends Document {
   npc: string;
   attributes: IAttributes;
   talents: ITalents;
