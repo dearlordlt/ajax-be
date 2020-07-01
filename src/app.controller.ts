@@ -30,9 +30,10 @@ export class AppController {
     return 'Hello World ' + test;
   }
 
-  @Get('auth/test/')
-  async testGet() {
-    return 'Hello World';
+  @UseGuards(AuthGuard('jwt'))
+  @Get('users')
+  async find() {
+    return this.usersService.getAllUsers();
   }
 
   @UseGuards(AuthGuard('jwt'))
