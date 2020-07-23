@@ -13,6 +13,7 @@ export class CharCTableDto {
   @ApiProperty()
   readonly name: string;
   @ApiProperty()
+  // tslint:disable-next-line: variable-name
   readonly _id: string;
   @ApiProperty()
   readonly str: number;
