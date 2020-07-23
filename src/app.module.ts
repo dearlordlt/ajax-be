@@ -14,6 +14,7 @@ import { ShieldsModule } from './shields/shields.module';
 import { CharacterModule } from './characters/characters.module';
 import { BeastsAndCreaturesController } from './beasts-and-creatures/beasts-and-creatures.controller';
 import { BeastsAndCreaturesModule } from './beasts-and-creatures/beasts-and-creatures.module';
+import { CharCTableModule } from './char-ctable/char-ctable.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { BeastsAndCreaturesModule } from './beasts-and-creatures/beasts-and-crea
     ShieldsModule,
     CharacterModule,
     BeastsAndCreaturesModule,
+    CharCTableModule,
   ],
   controllers: [AppController],
   providers: [
