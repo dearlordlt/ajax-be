@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CharCTableDto {
+export class CharCombatTableDto {
   @ApiProperty()
   readonly name: string;
   @ApiProperty()

@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-export interface ICharCTable extends Document {
+export interface ICharCombatTable extends Document {
   name: string;
   _id: string;
   str: number;

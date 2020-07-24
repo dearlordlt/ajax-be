@@ -1,17 +1,16 @@
 import { Module } from '@nestjs/common';
-import { CharCTableService } from './char-ctable.service';
-import { CharactersController } from 'src/characters/characters.controller';
+import { CharCombatTableService } from './char-combat-table.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CharCTableController } from './char-ctable.controller';
+import { CharCTableController } from './char-combat-table.controller';
 import { CharCombatTableSchema } from 'src/models/char-combat-table.schema';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
-      { name: 'CharCombatTableSchema', schema: CharCombatTableSchema },
+      { name: 'CharCombatTable', schema: CharCombatTableSchema },
     ]),
   ],
   controllers: [CharCTableController],
-  providers: [CharCTableService],
+  providers: [CharCombatTableService],
 })
 export class CharCTableModule {}

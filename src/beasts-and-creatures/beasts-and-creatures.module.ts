@@ -6,10 +6,11 @@ import { BeastsAndCreaturesSchema } from 'src/models/Beasts-And-Creatures.schema
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: 'BeastsAndCreatures', schema: BeastsAndCreaturesSchema }]),
+    MongooseModule.forFeature([
+      { name: 'BeastsAndCreatures', schema: BeastsAndCreaturesSchema },
+    ]),
   ],
   controllers: [BeastsAndCreaturesController],
   providers: [BeastsAndCreaturesService],
 })
-
 export class BeastsAndCreaturesModule {}
