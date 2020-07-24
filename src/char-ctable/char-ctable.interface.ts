@@ -1,11 +1,6 @@
 import { Document } from 'mongoose';
 
 export interface ICharCTable extends Document {
-  mainView: string;
-  collapseArmor: boolean;
-  showArmor: boolean;
-  showDamage: boolean;
-
   name: string;
   _id: string;
   str: number;

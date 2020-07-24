@@ -1,11 +1,6 @@
 import * as mongoose from 'mongoose';
 
-export const CharCTableSchema = new mongoose.Schema({
-  mainView: String,
-  collapseArmor: Boolean,
-  showArmor: Boolean,
-  showDamage: Boolean,
-
+export const CharCombatTableSchema = new mongoose.Schema({
   name: {
     type: String,
     unique: true,

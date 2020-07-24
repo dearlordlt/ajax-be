@@ -2,15 +2,6 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CharCTableDto {
   @ApiProperty()
-  readonly mainView: string;
-  @ApiProperty()
-  readonly collapseArmor: boolean;
-  @ApiProperty()
-  readonly showArmor: boolean;
-  @ApiProperty()
-  readonly showDamage: boolean;
-
-  @ApiProperty()
   readonly name: string;
   @ApiProperty()
   // tslint:disable-next-line: variable-name
